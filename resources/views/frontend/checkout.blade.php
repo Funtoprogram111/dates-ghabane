@@ -43,7 +43,7 @@
         </div>
 
         @endif
-        <form class="animated bounceInLeft" method="post" action="{{ route('address_create') }}">
+        <form class="animated bounceInLeft" method="post" action="{{ secure_url('/address/create') }}">
         {{ csrf_field() }}
 
 
