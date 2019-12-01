@@ -5,7 +5,7 @@
         <a title="{{ $prod->slug }}" href="{{ route('dates', $prod->slug, $prod->id) }}" class="product-thumbnail">
           <div class="image-wrapper">
               <div class="addToCart">
-                <form style="display: :none;z-index: 9999; position: relative;" method="get" action="{{ route('cart.addItem', $prod->id) }}">
+                <form style="display: :none;z-index: 9999; position: relative;" method="get" action="{{ secure_url('/cart/add-item', $prod->id) }}">
                   {{ csrf_field() }}
 
                   <button type="submit" class="btn btn-info btn-xs">

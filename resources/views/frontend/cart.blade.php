@@ -58,7 +58,7 @@
                                 <i class="status fas fa-circle mr-1 text-success" style="font-size: 8px !important;"></i>
                               </td>
                               <td>
-                                <form class="d-flex" action="{{ route('cart.updateItem', $cartItem->rowId) }}" method="post">
+                                <form class="d-flex" action="{{ secure_url('/cart/update-Item', $cartItem->rowId) }}" method="post">
                                 {{csrf_field()}}
                                 {{method_field('PUT')}}
                                 <input class="form-control" name="qty" type="number" value="{{ $cartItem->qty }}"/>
@@ -69,7 +69,7 @@
                               </td>
                               <td>{{ $cartItem->price }}</td>
                               <td>
-                                <form action="{{ route('cart.deleteItem', $cartItem->rowId) }}" method="post">
+                                <form action="{{ secure_url('/cart/delete-Item', $cartItem->rowId) }}" method="post">
                                  {{csrf_field()}}
                                  {{method_field('DELETE')}}
                                   <button type="submit" class="remove btn btn-sm btn-danger">
@@ -117,14 +117,14 @@
                 <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12 text-right">
                   @if (Cart::count() == 0)
 
-                    <form style="display: :none;" method="get" action="{{ route('checkout') }}">
+                    <form style="display: :none;" method="get" action="{{ secure_url('/checkout/shipping_info') }}">
                       {{ csrf_field() }}
                       <button disabled="disabled" class="btn btn-info btn-block font-weight-light text-uppercase"><i class="fas fa-check mr-1"></i>Checkout</button>
                     </form>
 
                   @else
 
-                  <form style="display: :none;" method="get" action="{{ route('checkout') }}">
+                  <form style="display: :none;" method="get" action="{{ secure_url('/checkout/shipping_info') }}">
                       {{ csrf_field() }}
                       <button class="btn btn-info btn-block font-weight-light text-uppercase"><i class="fas fa-check mr-1"></i>Checkout</button>
                   </form>
