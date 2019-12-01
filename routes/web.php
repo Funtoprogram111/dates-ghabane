@@ -21,6 +21,7 @@ Route::get('/dates/{param}', 'FrontController@getProductById')->name('dates');
 
 Route::group(['middleware' => ['forceSSL']], function () {
     Route::post('/send/success', 'MessageController@sendMessage')->name('send');
+    Route::resource('profiles', 'ProfileController');
 });
 
 Route::group(['middleware'=>['no-cache']], function (){

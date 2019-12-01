@@ -15,15 +15,15 @@
         <link rel="manifest" href="{{secure_asset('frontend/images/site.webmanifest')}}">
 
         <!-- Styles -->
-        {{--
+
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/all.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/uikit.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap-formhelpers.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/animate.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}">
-        --}}
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-96e681c7ad.css') }}">
+
+        {{--<link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-96e681c7ad.css') }}">--}}
         @stack('css')
 
     </head>
@@ -39,7 +39,7 @@
     </div>
 
     <!--Scripts-->
-    {{--
+
     <script src="{{ secure_asset('frontend/js/jquery.min.js') }}" type="text/javascript" async defer></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="{{ secure_asset('frontend/js/popper.min.js') }}" type="text/javascript" async defer></script>
@@ -47,8 +47,8 @@
     <script src="{{ secure_asset('frontend/js/uikit.min.js') }}" type="text/javascript" async defer></script>
     <script src="{{ secure_asset('frontend/js/bootstrap-formhelpers.min.js') }}" type="text/javascript" async defer></script>
     <script src="{{ secure_asset('https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>
-    --}}
-    <script src="{{ secure_asset('build/js/application-4e87fa438e.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>
 
+    {{--<script src="{{ secure_asset('build/js/application-4e87fa438e.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>--}}
+    @stack('js')
 </body>
 </html>
