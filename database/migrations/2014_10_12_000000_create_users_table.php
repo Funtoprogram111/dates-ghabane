@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->tinyInteger('isAdmin')->nullable();
+            $table->string('avatar')->default("avatar.png");
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

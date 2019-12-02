@@ -9,6 +9,7 @@
         "brian2694/laravel-toastr": "^5.5",
         "fzaninotto/faker": "^1.9",
         "gloudemans/shoppingcart": "^2.6",
+        "intervention/image": "^2.5",
         "laravel/framework": "5.3.*"
     },
     "require-dev": {

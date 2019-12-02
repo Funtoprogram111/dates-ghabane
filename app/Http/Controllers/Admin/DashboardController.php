@@ -46,7 +46,7 @@ class DashboardController extends Controller
             ->orderBy('orders.created_at', 'asc')
             ->latest('orders.created_at')
             ->get();
-
+      /*return response()->json($tables);*/
       return view('admin.dashboard', compact('prods','cats','orders','addresses', "tables", "emails", "users", "delivered"));
 
     }

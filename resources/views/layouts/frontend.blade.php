@@ -80,6 +80,19 @@
         <script src="{{ secure_asset('frontend/js/main.js') }}" type="text/javascript" async defer></script>
         <script src="{{ secure_asset('frontend/js/turbolinks.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>--}}
 
-
+        <script>
+          $('div.dropdown').hover(function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(100);
+          }, function() {
+            $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(100);
+          });
+          $('.btn-contact').on('click', function() {
+              var $this = $(this);
+            $this.button('loading');
+              setTimeout(function() {
+                 $this.button('reset');
+             }, 8000);
+          });
+        </script>
     </body>
 </html>

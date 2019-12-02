@@ -18,10 +18,11 @@ Route::get('/cart/add-item/{id}', 'FrontController@addItem')->name('cart.addItem
 Route::delete('/cart/delete-Item/{id}', 'FrontController@deleteItem')->name('cart.deleteItem');
 Route::PUT('/cart/update-Item/{id}', 'FrontController@updateItem')->name('cart.updateItem');
 Route::get('/dates/{param}', 'FrontController@getProductById')->name('dates');
+Route::get('/profile/{user}', 'UserController@edit')->name('edit-user');
+Route::PUT('/profile/{user}', 'UserController@update')->name('update-user');
 
 Route::group(['middleware' => ['forceSSL']], function () {
     Route::post('/send/success', 'MessageController@sendMessage')->name('send');
-    Route::resource('profiles', 'ProfileController');
 });
 
 Route::group(['middleware'=>['no-cache']], function (){

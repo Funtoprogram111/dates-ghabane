@@ -11,7 +11,6 @@
                 <img width="100px" src="{{ secure_asset('frontend/images/Logo_black.png') }}" alt="dates_Ghaban_dashboard">
             </a>
             <h1 class="display-4 text-uppercase font-weight-bold">Sign-in</h1>
-            <div class="animated bounceInLeft text-block font-weight-light">hi <mark class="font-weight-bold">custumer</mark>!, you can<a title="profile-custumer" class="ml-1 mr-1 text-lowercase font-weight-light" href="{{ secure_url('profiles/edit', Auth::user()->id) }}"> update </a> your profile info<i class="far fa-smile ml-1"></i></div>
         </div>
     </div>
 

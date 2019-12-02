@@ -35,10 +35,16 @@
     <li class="nav-item">
 
       @if (Auth::check())
-
-      <a href="{{ secure_url('/logout') }}" title="users_account" class="nav-link"><i class="fas fa-sign-out-alt fa-1x mr-1"></i>
-          Logged Out
-      </a>
+      <div class="dropdown show">
+        <a id="dropdownMenuLink" href="" title="users_account" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="mr-1 border border-info uk-border-circle" width="22px" src="{{ secure_asset('/uploads/'. Auth::user()->avatar) }}" alt="">
+            {{ Auth::user()->name }}
+        </a>
+        <div style="background-color: transparent;" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <a class="nav-link dropdown-item" href="{{ secure_url('/logout') }}"><i class="far fa-user fa-1x mr-1"></i>Logged Out</a>
+          <a class="nav-link dropdown-item" href="{{ secure_url('/profile', $user->id) }}"><i class="far fa-user fa-1x mr-1"></i>profile</a>
+        </div>
+      </div>
 
       @else
 

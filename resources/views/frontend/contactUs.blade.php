@@ -46,7 +46,7 @@
 
 
     <div class="form-group">
-      <button class="btn btn-info font-weight-light" type="submit"><i class="far fa-paper-plane mr-1"></i>submit</button>
+      <button class="btn-contact btn btn-info font-weight-light" type="submit" data-loading-text="<i class='far fa-circle-o-notch fa-spin'></i> Processing"><i class="far fa-paper-plane mr-1"></i>submit</button>
     </div>
 
   </form>

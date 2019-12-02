@@ -7,11 +7,13 @@ use App\Models\Product;
 use App\Models\Category;
 use DB;
 use Cart;
+use Auth;
 
 class FrontController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+      $user = Auth::user();
       $categories = Category::all();
       $products = Product::with('category')->paginate(12);
       $products_filter = DB::table('products')
@@ -20,7 +22,7 @@ class FrontController extends Controller
 
       /*return response()->json([$products,$products_filter], 404);*/
 
-      return view('welcome', compact('products', 'products_filter'));
+      return view('welcome', compact('products', 'products_filter','user'));
     }
 
     public function cart()
@@ -69,6 +71,7 @@ class FrontController extends Controller
                 ->get();
       return view('frontend.product_details', compact('product', 'randomProducts'));
     }
+
 
 
 }
