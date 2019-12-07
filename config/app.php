@@ -169,6 +169,7 @@ return [
         Brian2694\Toastr\ToastrServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
 
         //
@@ -232,6 +233,7 @@ return [
         'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

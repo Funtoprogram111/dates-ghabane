@@ -69,6 +69,9 @@
                         <a class="ml-3 text-lowercase font-weight-light" href="{{ url('/register') }}">create new account</a>
 
                 </div>
+                <!-- <div class="text-block font-weight-light">or logged with</div>
+                <a title="" class="btn btn-info font-weight-light text-uppercase btn-block" href=""><i class="fab fa-facebook-f mr-2"></i>facebook</a>
+                <a title="" class="btn btn-danger font-weight-light text-uppercase btn-block" href=""><i class="fab fa-google-plus-g mr-2"></i>google plus</a> -->
 
             </form>
         </div>

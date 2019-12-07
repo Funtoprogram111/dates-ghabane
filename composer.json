@@ -10,7 +10,8 @@
         "fzaninotto/faker": "^1.9",
         "gloudemans/shoppingcart": "^2.6",
         "intervention/image": "^2.5",
-        "laravel/framework": "5.3.*"
+        "laravel/framework": "5.3.*",
+        "laravel/socialite": "~2.0.0"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

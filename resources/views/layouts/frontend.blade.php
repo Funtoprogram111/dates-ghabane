@@ -86,13 +86,6 @@
           }, function() {
             $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(100);
           });
-          $('.btn-contact').on('click', function() {
-              var $this = $(this);
-            $this.button('loading');
-              setTimeout(function() {
-                 $this.button('reset');
-             }, 8000);
-          });
         </script>
     </body>
 </html>
