@@ -21,7 +21,6 @@ class EcomDatabaseSeeder extends Seeder
             $users = User::create([
                 'name' => $faker->name,
                 'isAdmin' => intval($faker->boolean),
-                'avatar' => $faker->imageUrl($width = 640, $height = 480),
                 'email' => $faker->email,
                 'password' => bcrypt('123admin'),
             ]);

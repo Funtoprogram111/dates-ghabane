@@ -15,14 +15,30 @@ class FrontController extends Controller
     {
       $user = Auth::user();
       $categories = Category::all();
+      $categories_prods = DB::table('categories')
+                        ->select('id', 'name')
+                        ->orderBy('name', 'asc')
+                        ->get();
       $products = Product::with('category')->paginate(12);
+      $products_cats = Product::with('category')->get();
       $products_filter = DB::table('products')
                     ->latest()
                     ->get();
 
-      /*return response()->json([$products,$products_filter], 404);*/
+      if ($request->ajax() && isset($request->category)) {
+            $category = $request->category;
+            $Products = Product::with('category')->whereIn('category_id', explode(',', $category))->take(6);
+            dd($Products);
+            response()->json($Products);
+            return view('welcome', compact('products', 'products_filter','user', 'products_cats', 'categories_prods', 'Products'));
+        } else {
+            $Products = Product::with('category')->take(6);
+            return view('welcome', compact('products', 'products_filter','user', 'products_cats', 'categories_prods', 'Products'));
+        }
 
-      return view('welcome', compact('products', 'products_filter','user'));
+      /*return response()->json($categories_prods);*/
+
+      return view('welcome', compact('products', 'products_filter','user', 'products_cats', 'categories_prods', 'Products'));
     }
 
     public function cart()
@@ -71,7 +87,6 @@ class FrontController extends Controller
                 ->get();
       return view('frontend.product_details', compact('product', 'randomProducts'));
     }
-
 
 
 }

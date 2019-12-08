@@ -53,7 +53,7 @@
     @stack('js')
 
     <script>
-    $( document ).ready(function() {
+    /*$( document ).ready(function() {
       var bar = document.getElementById('js-progressbar');
 
       UIkit.upload('.js-upload', {
@@ -110,7 +110,7 @@
           }
 
       });
-    });
+    });*/
 
     </script>
 

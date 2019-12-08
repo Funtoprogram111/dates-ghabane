@@ -53,16 +53,18 @@
 
                 </div>
 
-                <div class="js-upload uk-placeholder uk-text-center" style="border:1px dashed #555;">
-                    <span uk-icon="icon: cloud-upload"></span>
-                    <span class="uk-text-middle">Attach binaries by dropping them here or</span>
-                    <div uk-form-custom>
-                        <input type="file" name="avatar">
-                        <span class="uk-link"><i class="fas fa-cloud-upload-alt fa-3x"></i></span>
+                <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                    <div class="js-upload uk-placeholder uk-text-center" style="border:1px dashed #555;">
+                        <span uk-icon="icon: cloud-upload"></span>
+                        <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+                        <div uk-form-custom>
+                            <input type="file" name="avatar">
+                            <span class="uk-link"><i class="fas fa-cloud-upload-alt fa-3x"></i></span>
+                        </div>
                     </div>
-                </div>
 
-                <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+                    <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+                </div>
                 @if ($errors->has('avatar'))
                     <span class="help-block text-lowercase text-small text-danger">
                         <strong><small><i class="far fa-times-circle mr-1"></i>{{ $errors->first('avatar') }}</small></strong>

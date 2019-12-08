@@ -58,7 +58,6 @@
             @yield('content')
 
 
-
             @include('frontend.partials._footer')
 
         </div>
@@ -85,6 +84,29 @@
             $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(100);
           }, function() {
             $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(100);
+          });
+
+          $(function () {
+            $('.try').click(function(){
+               /*alert('OK !');*/
+              var category = [];
+              $('.try').each(function(){
+                  if($(this).is(":checked")){
+                      category.push($(this).val());
+                  }
+              });
+              Finalcategory = category.toString();
+              $.ajax({
+                 type: 'get',
+                    dataType: 'html',
+                    url: '',
+                    data: "category=" + Finalcategory,
+                    success: function (response) {
+                        console.log(response);
+                        $('#updateDiv').html(response);
+                    }
+              });
+            });
           });
         </script>
     </body>

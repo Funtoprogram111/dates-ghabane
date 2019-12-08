@@ -26,7 +26,7 @@ class UserProfileRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'avatar' => 'required|image|mimes:png,jpg,jpeg,svg|max:10000',
+            'avatar' => 'required|mimes:png,jpg,jpeg,svg|max:10000',
         ];
     }
 }
