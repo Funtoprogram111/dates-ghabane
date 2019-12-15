@@ -170,6 +170,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        MercurySeries\Flashy\FlashyServiceProvider::class,
 
 
         //
@@ -234,7 +235,7 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
     ],
 
 ];

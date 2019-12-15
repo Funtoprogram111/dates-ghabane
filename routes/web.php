@@ -12,9 +12,9 @@
 */
 
 Route::get('/', 'FrontController@index')->name('home');
-
 Route::get('/cart', 'FrontController@cart')->name('cart.index');
 Route::get('/cart/add-item/{id}', 'FrontController@addItem')->name('cart.addItem');
+Route::get('/add-item-to-wishlist', 'FrontController@addItemToWishlist')->name('add-Item-To-Wishlist');
 Route::delete('/cart/delete-Item/{id}', 'FrontController@deleteItem')->name('cart.deleteItem');
 Route::PUT('/cart/update-Item/{id}', 'FrontController@updateItem')->name('cart.updateItem');
 Route::get('/dates/{param}', 'FrontController@getProductById')->name('dates');

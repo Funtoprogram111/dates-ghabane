@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Wishlist;
 use DB;
 use Cart;
 use Auth;
@@ -13,32 +14,27 @@ class FrontController extends Controller
 {
     public function index(Request $request)
     {
-      $user = Auth::user();
-      $categories = Category::all();
-      $categories_prods = DB::table('categories')
-                        ->select('id', 'name')
-                        ->orderBy('name', 'asc')
-                        ->get();
-      $products = Product::with('category')->paginate(12);
-      $products_cats = Product::with('category')->get();
-      $products_filter = DB::table('products')
-                    ->latest()
-                    ->get();
+        $q = $request->q;
+        $user = Auth::user();
+        $categories = Category::all();
+        $products = Product::with('category')
+                  ->where('products.name', 'like', '%' .$q. '%')
+                  ->orWhere('categories.name', 'like', '%' .$q. '%')
+                  ->leftJoin('categories', 'categories.id' , '=' ,'products.category_id')
+                  ->select('products.*', 'categories.name as categories_name', 'products.name as products_name')
+                  ->paginate(12);
+        $products_filter = DB::table('products')
+                      ->latest()
+                      ->get();
 
-      if ($request->ajax() && isset($request->category)) {
-            $category = $request->category;
-            $Products = Product::with('category')->whereIn('category_id', explode(',', $category))->take(6);
-            dd($Products);
-            response()->json($Products);
-            return view('welcome', compact('products', 'products_filter','user', 'products_cats', 'categories_prods', 'Products'));
-        } else {
-            $Products = Product::with('category')->take(6);
-            return view('welcome', compact('products', 'products_filter','user', 'products_cats', 'categories_prods', 'Products'));
-        }
+        // return response()->json($products);
+        /*$products_search = DB::table('products')
+                ->join('categories', 'categories.id', 'products.category_id')
+                ->where('products.name', 'like', '%' .$q. '%')
+                ->get();*/
 
-      /*return response()->json($categories_prods);*/
+        return view('welcome', compact('products', 'products_filter','user'));
 
-      return view('welcome', compact('products', 'products_filter','user', 'products_cats', 'categories_prods', 'Products'));
     }
 
     public function cart()
@@ -86,6 +82,15 @@ class FrontController extends Controller
                 ->inRandomOrder()
                 ->get();
       return view('frontend.product_details', compact('product', 'randomProducts'));
+    }
+
+    public function addItemToWishlist(Request $request)
+    {
+      $wishlists = new Wishlist;
+      $wishlists->user_id = Auth::user()->id;
+      $wishlists->product_id = $request->product_id;
+      $wishlists->save();
+      return back()->with('status', 'Your product have been added successfully in your wishlist !');
     }
 
 

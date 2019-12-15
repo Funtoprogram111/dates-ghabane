@@ -5,20 +5,27 @@
         <a title="{{ $prod->slug }}" href="{{ route('dates', $prod->slug, $prod->id) }}" class="product-thumbnail">
           <div class="image-wrapper">
               <div class="addToCart">
-                <form style="display: :none;z-index: 9999; position: relative;" method="get" action="{{ secure_url('/cart/add-item', $prod->id) }}">
-                  {{ csrf_field() }}
-
+                <form style="z-index: 9999; position: relative;" method="get" action="{{ secure_url('/cart/add-item', $prod->id) }}">
                   <button type="submit" class="btn btn-info btn-xs">
                     <i class="material-icons">add_shopping_cart</i>
                   </button>
-
+                  {{ csrf_field() }}
                 </form>
               </div>
+              {{--<form action="{{ secure_url('/add-item-to-wishlist') }}">
+                                                                          <div class="wrapper-tow">
+                                                                              <button type="submit" class="btn btn-xs btn-default">
+                                                                                <div class="icon-wishlist"></div>
+                                                                              </button>
+                                                                          </div>
+                                                                        <input type="hidden" name="product_id" value="{{ $prod->id }}">
+                                                                        {{ csrf_field() }}
+                                                                      </form>--}}
             <img class="img-fluid" src="{{ secure_asset($prod->image) }}" alt="dates_ghabane">
           </div>
           <div class="thumbnail-text mt-3 pr-2 pl-2">
             <div class="card-toptext">
-              <div class="category-tag">{{ $prod->category->name }}</div>
+              <div id="category-tag" class="category-tag" style="color: #fff;">{{ $prod->categories_name }}</div>
               <div class="product-title">
 
                   <i class="status fas fa-circle mr-1 text-success" style="font-size: 8px !important;"></i>
@@ -33,7 +40,7 @@
                     <i class="fas fa-money-bill mr-1"></i>{{ $prod->price }}<i class="ml-1 fas fa-dollar-sign"></i>
                   </div>
                   <div>
-                    <i class="far fa-clock mr-1"></i>Added in {{ $prod->created_at->diffForHumans() }}
+                    <i class="far fa-clock mr-1"></i>Added in {{ \Carbon\Carbon::parse($prod->created_at)->diffForHumans() }}
                   </div>
               </div>
             </div>

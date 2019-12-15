@@ -41,45 +41,25 @@
           {{ $products->total() }} products
         </div>
       </div>
+      <div class="d-flex justify-content-center mt-4">
+        <div class="col-sm-3">
+          <form class="mb-5" action="{{ secure_url('/') }}">
+            <div class="search-wrapper mt-3">
+              <div class="input-holder">
+                <input name="q" type="text" class="search-input" placeholder="Search for products...">
+                <button type="submit" class="btn btn-default search-icon" onclick="searchToggle(this, event);"><span><i class="fas fa-search"></i></span></button>
+              </div>
+              <span class="close" onclick="searchToggle(this, event);"></span>
+            </div>
+            {{ csrf_field() }}
+          </form>
+        </div>
+      </div>
       <div class="fetch-products row mt-4">
         @include('frontend.products')
       </div>
       <div class="col text-center">
         {{ $products->links('vendor.pagination.bootstrap-4') }}
-      </div>
-      <div class="col text-center">
-        <button type="button" class="btn btn-outline-info font-weight-light text-uppercase" uk-toggle="target: #my-id; animation: uk-animation-fade">Product filter</button>
-      </div>
-      <div id="my-id" class="row mt-4">
-
-          <div class="col-lg-3 col-md-6 col-sm-8 col-xs-12">
-            <ul class="list-group">
-
-              @foreach ($categories_prods as $cats)
-
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <label class="text-capitalize font-weight-bold">
-                        <input id="categoryId" class="try mr-1 uk-checkbox" type="checkbox" value="{{ $cats->id }}">
-                        {{ $cats->name }}
-                    </label>
-                    <span class="text-right badge badge-info badge-pill">{{ App\Models\Product::where('category_id', $cats->id)->count() }}</span>
-                </li>
-
-              @endforeach
-
-            </ul>
-          </div>
-
-          <div id="updateDiv" class="col-lg-9">
-            <div class="row">
-
-              @include('frontend.products_categories_filter')
-
-            </div>
-
-          </div>
-
-
       </div>
 
     </div>

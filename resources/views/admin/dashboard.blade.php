@@ -11,7 +11,7 @@
         <div class="card card-stats">
           <div class="card-header card-header-info card-header-icon">
             <div class="card-icon">
-              <i class="material-icons">save</i>
+              <i class="fas fa-database"></i>
             </div>
             <p class="card-category">{{ str_plural('category', count($cats)) }}</p>
             <h3 class="card-title">{{ count($cats) }} </h3>
@@ -26,7 +26,7 @@
         <div class="card card-stats">
           <div class="card-header card-header-success card-header-icon">
             <div class="card-icon">
-              <i class="material-icons">save</i>
+              <i class="fas fa-database"></i>
             </div>
             <p class="card-category">{{ str_plural('product', count($prods)) }}</p>
             <h3 class="card-title">{{ count($prods) }}</h3>
@@ -40,7 +40,7 @@
         <div class="card card-stats">
           <div class="card-header card-header-rose card-header-icon">
             <div class="card-icon">
-              <i class="material-icons">save</i>
+              <i class="fas fa-database"></i>
             </div>
             <p class="card-category">{{ str_plural('order', count($orders)) }}</p>
             <h3 class="card-title">{{ count($orders) }}</h3>
@@ -54,7 +54,7 @@
         <div class="card card-stats">
           <div class="card-header card-header-primary card-header-icon">
             <div class="card-icon">
-              <i class="material-icons">save</i>
+              <i class="fas fa-database"></i>
             </div>
             <p class="card-category">{{ str_plural('address', count($addresses)) }}</p>
             <h3 class="card-title">{{ count($addresses) }}</h3>
@@ -73,7 +73,7 @@
         <div class="card card-stats">
           <div class="card-header card-header-warning card-header-icon">
             <div class="card-icon">
-              <i class="material-icons">save</i>
+              <i class="fas fa-database"></i>
             </div>
             <p class="card-category">{{ str_plural('email', count($emails)) }}</p>
             <h3 class="card-title">{{ count($emails) }}</h3>
@@ -87,10 +87,24 @@
         <div class="card card-stats">
           <div class="card-header card-header-default card-header-icon">
             <div class="card-icon">
-              <i class="material-icons">save</i>
+              <i class="fas fa-database"></i>
             </div>
             <p class="card-category">{{ str_plural('customer', count($users)) }}</p>
             <h3 class="card-title">{{ count($users) }}</h3>
+          </div>
+          <div class="card-footer">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <p class="card-category">{{ str_plural('wishlist', count($wishlistData)) }}</p>
+            <h3 class="card-title">{{ count($wishlistData) }}</h3>
           </div>
           <div class="card-footer">
           </div>
@@ -122,6 +136,12 @@
         <a class="nav-link" href="#tasks-1" role="tab" data-toggle="tab">
             <i class="material-icons">apps</i>
             delivered orders
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#wishlists" role="tab" data-toggle="tab">
+            <i class="material-icons">apps</i>
+            wishlists
         </a>
     </li>
 </ul>
@@ -332,6 +352,52 @@
               </table>
           </div>
     </div>
+    <div class="tab-pane" id="wishlists">
+        <div class="table-responsive">
+              <table id="wishlistsDatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                  <thead class="text-small">
+                  <tr>
+                      <th>#costumer</th>
+                      <th>#Product_Image</th>
+                      <th>Name</th>
+                      <th>Category</th>
+                  </tr>
+                  </thead>
+                  <tfoot>
+                  <tr>
+                      <th>#costumer</th>
+                      <th>#Product_Image</th>
+                      <th>Name</th>
+                      <th>Category</th>
+                  </tr>
+                  </tfoot>
+                  <tbody>
+
+                      <!-- orders -->
+
+                      @forelse($wishlistData as $wish)
+
+                          <tr>
+                              <td>
+                                @if (Auth::check())
+                                  <img width="30px" class="mr-2 img-fluide rounded-circle" src="{{ secure_asset('uploads/'. $wish->avatar) }}" alt="avatar"/><span class="badge badge-default">{{ Auth::user()->name }}</span>
+                                @endif
+                              </td>
+                              <td><img width="50px" class="img-fluide" src="{{ $wish->image }}" alt="dates_ghabane"/></td>
+                              <td>{{ $wish->products_name }}</td>
+                              <td class="text-info font-weight-bold"><span class="badge badge-primary">{{ $wish->categories_name }}</span></td>
+                          </tr>
+
+                          @empty
+
+                          <p><small class="">No wishlist Data in our database</small></p>
+
+                          @endforelse
+
+                  </tbody>
+              </table>
+          </div>
+    </div>
 </div>
       </div>
     </div>
@@ -348,6 +414,7 @@
     $('#Addressesdatatable').DataTable();
     $('#PendingOrdersDatatable').DataTable();
     $('#DeliveredOrdersDatatable').DataTable();
+    $('#wishlistsDatatable').DataTable();
   });
 </script>
 @endpush

@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Address;
 use App\Models\Order;
+use App\Models\Wishlist;
 
 class User extends Authenticatable
 {
@@ -46,5 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+
+    public function wishlists()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 
 }

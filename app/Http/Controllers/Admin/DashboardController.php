@@ -46,8 +46,16 @@ class DashboardController extends Controller
             ->orderBy('orders.created_at', 'asc')
             ->latest('orders.created_at')
             ->get();
-      /*return response()->json($tables);*/
-      return view('admin.dashboard', compact('prods','cats','orders','addresses', "tables", "emails", "users", "delivered"));
+
+      $wishlistData = DB::table('wishlists')
+            ->join('products', 'products.id', '=', 'wishlists.product_id')
+            ->join('users', 'users.id', '=', 'wishlists.user_id')
+            ->Join('categories', 'categories.id' , '=' ,'products.category_id')
+            ->select('products.*', 'categories.name as categories_name', 'products.name as products_name', 'users.*', 'users.name')
+            ->orderBy('wishlists.created_at', 'asc')
+            ->get();
+      /*return response()->json($wishlistData);*/
+      return view('admin.dashboard', compact('prods','cats','orders','addresses', "tables", "emails", "users", "delivered", 'wishlistData'));
 
     }
 

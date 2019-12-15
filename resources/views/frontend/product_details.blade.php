@@ -33,6 +33,12 @@
               </div>
             </div>
             <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+            @if (session('status'))
+              <div class="uk-alert-success" uk-alert>
+                  <a class="uk-alert-close" uk-close></a>
+                  <p>{{ session('status') }}</p>
+              </div>
+            @endif
               <div class="card bg-light mb-3">
                 <div class="card-header font-weight-light text-left">#details</div>
                 <div class="card-body">
@@ -47,10 +53,15 @@
                   <p class="card-text font-weight-light text-justify">
                     {!! $product->description !!}
                   </p>
-                  <div class="col-xs-12">
+                  <div class="d-flex col-xs-12">
                       <a href="{{ route('cart.addItem', $product->id) }}" title="{{ $product->name }}">
                         <button class="uk-button uk-button-secondary font-weight-light text-uppercase"><i class="fa fa-cart-plus mr-1"></i>add to cart</button>
                       </a>
+                      <form action="{{ secure_url('/add-item-to-wishlist') }}">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="ml-2 uk-button uk-button-primary font-weight-light text-uppercase"><i class="far fa-heart mr-1"></i>add to wishlist</button>
+                      </form>
                   </div>
                 </div>
               </div>
