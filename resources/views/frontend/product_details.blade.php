@@ -57,11 +57,21 @@
                       <a href="{{ route('cart.addItem', $product->id) }}" title="{{ $product->name }}">
                         <button class="uk-button uk-button-secondary font-weight-light text-uppercase"><i class="fa fa-cart-plus mr-1"></i>add to cart</button>
                       </a>
-                      <form action="{{ secure_url('/add-item-to-wishlist') }}">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button type="submit" class="ml-2 uk-button uk-button-primary font-weight-light text-uppercase"><i class="far fa-heart mr-1"></i>add to wishlist</button>
-                      </form>
+                      <?php $count = App\Models\Wishlist::where(['product_id' => $product->id])->count(); ?>
+                      @if ($count == 0 )
+
+                        <form action="{{ secure_url('/add-item-to-wishlist') }}">
+                          <input type="hidden" name="product_id" value="{{ $product->id }}">
+                          <button type="submit" class="ml-2 uk-button uk-button-primary font-weight-light text-uppercase"><i class="far fa-heart mr-1"></i>add to wishlist</button>
+                          {{ csrf_field() }}
+                        </form>
+                        <button class="uk-button uk-button-default font-weight-light text-uppercase" disabled>{{ $count }}</button>
+
+                      @else
+
+                        <button class="uk-button uk-button-default font-weight-light text-uppercase" disabled><i class="fas fa-heart mr-1"></i>Already added to wishlist</button>
+
+                      @endif
                   </div>
                 </div>
               </div>

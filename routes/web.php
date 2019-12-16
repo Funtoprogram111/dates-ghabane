@@ -35,6 +35,7 @@ Route::group(['as'=>'admin.','prefix'=>'admin','namespace'=>'Admin','middleware'
     Route::resource('categories', 'CategoriesController');
     Route::resource('products','ProductsController');
     Route::post('item/delivered/success/{orderId}', 'DashboardController@toggledeliver')->name('toggle-deliver');
+    Route::delete('/wishlist/delete-Item/{id}', 'DashboardController@deleteItem');
 });
 
 Route::group(['middleware' => 'auth'], function () {

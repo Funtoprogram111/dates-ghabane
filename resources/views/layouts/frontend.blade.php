@@ -273,9 +273,6 @@
               $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(100);
             });
 
-            var hue = 'rgba(' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.floor(Math.random() * 255)) + ',' + (Math.random()) + ')';
-            $('.category-tag').css("background",hue);
-
             $('.icon-wishlist').on('click', function(){
               $(this).toggleClass('in-wishlist');
             });

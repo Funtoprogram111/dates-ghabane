@@ -121,13 +121,13 @@
         color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
     -->
     <li class="nav-item">
-        <a class="nav-link" href="#dashboard-1" role="tab" data-toggle="tab">
+        <a class="nav-link active" href="#dashboard-1" role="tab" data-toggle="tab">
             <i class="material-icons">apps</i>
             Addresses
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="#schedule-1" role="tab" data-toggle="tab">
+        <a class="nav-link" href="#schedule-1" role="tab" data-toggle="tab">
             <i class="material-icons">apps</i>
             pending orders
         </a>
@@ -146,7 +146,7 @@
     </li>
 </ul>
 <div class="tab-content tab-space">
-    <div class="tab-pane" id="dashboard-1">
+    <div class="tab-pane active" id="dashboard-1">
           <div class="table-responsive">
               <table id="Addressesdatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
                   <thead class="text-small">
@@ -200,7 +200,7 @@
               </table>
           </div>
     </div>
-    <div class="tab-pane active" id="schedule-1">
+    <div class="tab-pane" id="schedule-1">
       <div class="tab-pane" id="dashboard-1">
           <div class="table-responsive">
               <table id="PendingOrdersDatatable" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
@@ -361,6 +361,7 @@
                       <th>#Product_Image</th>
                       <th>Name</th>
                       <th>Category</th>
+                      <th>Action</th>
                   </tr>
                   </thead>
                   <tfoot>
@@ -369,6 +370,7 @@
                       <th>#Product_Image</th>
                       <th>Name</th>
                       <th>Category</th>
+                      <th>Action</th>
                   </tr>
                   </tfoot>
                   <tbody>
@@ -386,6 +388,15 @@
                               <td><img width="50px" class="img-fluide" src="{{ $wish->image }}" alt="dates_ghabane"/></td>
                               <td>{{ $wish->products_name }}</td>
                               <td class="text-info font-weight-bold"><span class="badge badge-primary">{{ $wish->categories_name }}</span></td>
+                              <td class="text-info font-weight-bold">
+                                <button class="btn btn-danger btn-round btn-fab waves-effect" type="button" onclick="deleteItems({{ $wish->products_id }})">
+                                    <i class="material-icons">delete</i>
+                                </button>
+                                <form id="delete-form-{{ $wish->products_id }}" action="{{ route('admin.', $wish->products_id) }}" method="post" style="display: none;">
+                                  {{ csrf_field() }}
+                                  {{ method_field('DELETE') }}
+                                </form>
+                              </td>
                           </tr>
 
                           @empty
@@ -409,6 +420,7 @@
 @push('js')
 <!--  DataTables.net Plugin, full documentation here: https://datatables.net/ -->
 <script src="{{ secure_asset('backend/js/plugins/jquery.datatables.min.js') }}"></script>
+<script src="{{ secure_asset('https://unpkg.com/sweetalert2@7.19.1/dist/sweetalert2.all.js') }}"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('#Addressesdatatable').DataTable();
@@ -416,5 +428,38 @@
     $('#DeliveredOrdersDatatable').DataTable();
     $('#wishlistsDatatable').DataTable();
   });
+  function deleteItems(id) {
+          swal({
+              title: 'Are you sure ?',
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Deletion !',
+              cancelButtonText: 'Canceled !',
+              confirmButtonClass: 'btn btn-success',
+              cancelButtonClass: 'btn btn-danger',
+              buttonsStyling: false,
+              reverseButtons: true
+          }).then((result) => {
+              if (result.value) {
+                  event.preventDefault();
+                  document.getElementById('delete-form-'+id).submit();
+                  Swal.fire(
+                    'Deleted!',
+                    'Your item have been deleted successfully !',
+                    'success'
+                  );
+              } else if (
+                  // Read more about handling dismissals
+                  result.dismiss === swal.DismissReason.cancel
+              )
+              {
+                  swal(
+                      'Your deletion has been canceled !'
+                  );
+              }
+          });
+      }
 </script>
 @endpush

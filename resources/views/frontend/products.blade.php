@@ -25,7 +25,7 @@
           </div>
           <div class="thumbnail-text mt-3 pr-2 pl-2">
             <div class="card-toptext">
-              <div id="category-tag" class="category-tag" style="color: #fff;">{{ $prod->categories_name }}</div>
+              <div id="category-tag" class="category-tag">{{ $prod->categories_name }}</div>
               <div class="product-title">
 
                   <i class="status fas fa-circle mr-1 text-success" style="font-size: 8px !important;"></i>

@@ -51,7 +51,7 @@ class DashboardController extends Controller
             ->join('products', 'products.id', '=', 'wishlists.product_id')
             ->join('users', 'users.id', '=', 'wishlists.user_id')
             ->Join('categories', 'categories.id' , '=' ,'products.category_id')
-            ->select('products.*', 'categories.name as categories_name', 'products.name as products_name', 'users.*', 'users.name')
+            ->select('products.*', 'categories.name as categories_name', 'products.name as products_name', 'products.id as products_id', 'users.*', 'users.name')
             ->orderBy('wishlists.created_at', 'asc')
             ->get();
       /*return response()->json($wishlistData);*/
@@ -74,6 +74,12 @@ class DashboardController extends Controller
         $order->save();
         Toastr::success('Your item have been successfully delivered !' ,'Congratulations !');
         Toastr::success('please check your email - we have sent a confirmation message!' ,'Congratulations !');
+        return redirect()->back();
+    }
+
+    public function deleteItem($id) {
+        DB::table('wishlists')->where('product_id', '=', $id)->delete();
+        Toastr::success('Your item have been removed from Wishlist successfully !' ,'Congratulations !');
         return redirect()->back();
     }
 
