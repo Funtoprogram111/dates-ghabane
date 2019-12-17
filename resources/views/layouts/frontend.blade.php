@@ -21,7 +21,7 @@
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/all.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/uikit.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}"> --}}
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-96e681c7ad.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-377937899f.css') }}">
 
         <style type="text/css">
             .wrapper-tow{
@@ -188,21 +188,6 @@
                 left: 0px;
                 top: 10px;
             }
-
-            .scrolled {
-              z-index: 9999999;
-            }
-            .turbolinks-progress-bar {
-                  position: fixed;
-                  display: block;
-                  top: 0;
-                  left: 0;
-                  height: 6px;
-                  background: #009CDC;
-                  z-index: 9999;
-                  transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
-                  transform: translate3d(0, 0, 0);
-            }
         </style>
 
     </head>
@@ -234,7 +219,7 @@
 
 
         <!--Scripts-->
-        <script src="{{ secure_asset('build/js/application-4e87fa438e.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>
+        <script src="{{ secure_asset('build/js/application-94677f4208.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>
         {{--
         <script src="{{ secure_asset('frontend/js/jquery.min.js') }}" type="text/javascript" async defer></script>
         <script src="{{ secure_asset('frontend/js/modernizr.min.js') }}" type="text/javascript" async defer></script>
@@ -246,100 +231,5 @@
         <script src="{{ secure_asset('frontend/js/typeit.min.js') }}" type="text/javascript" async defer></script>
         <script src="{{ secure_asset('frontend/js/main.js') }}" type="text/javascript" async defer></script>
         <script src="{{ secure_asset('frontend/js/turbolinks.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>--}}
-
-        <script>
-            function searchToggle(obj, evt){
-              var container = $(obj).closest('.search-wrapper');
-                  if(!container.hasClass('active')){
-                      container.addClass('active');
-                      evt.preventDefault();
-                  }
-                  else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-                      container.removeClass('active');
-                      // clear input
-                      container.find('.search-input').val('');
-                  }
-          }
-
-          $(function () {
-
-            var clearCacheOnce = function() {
-              Turbolinks.clearCache();
-            };
-
-            $('div.dropdown').hover(function() {
-              $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(100);
-            }, function() {
-              $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(100);
-            });
-
-            $('.icon-wishlist').on('click', function(){
-              $(this).toggleClass('in-wishlist');
-            });
-          });
-
-          $(function () {
-              var bar = document.getElementById('js-progressbar');
-
-                UIkit.upload('.js-upload', {
-
-                    url: '',
-                    multiple: true,
-
-                    beforeSend: function (environment) {
-                        console.log('beforeSend', arguments);
-
-                        // The environment object can still be modified here.
-                        // var {data, method, headers, xhr, responseType} = environment;
-
-                    },
-                    beforeAll: function () {
-                        console.log('beforeAll', arguments);
-                    },
-                    load: function () {
-                        console.log('load', arguments);
-                    },
-                    error: function () {
-                        console.log('error', arguments);
-                    },
-                    complete: function () {
-                        console.log('complete', arguments);
-                    },
-
-                    loadStart: function (e) {
-                        console.log('loadStart', arguments);
-
-                        bar.removeAttribute('hidden');
-                        bar.max = e.total;
-                        bar.value = e.loaded;
-                    },
-
-                    progress: function (e) {
-                        console.log('progress', arguments);
-
-                        bar.max = e.total;
-                        bar.value = e.loaded;
-                    },
-
-                    loadEnd: function (e) {
-                        console.log('loadEnd', arguments);
-
-                        bar.max = e.total;
-                        bar.value = e.loaded;
-                    },
-
-                    completeAll: function () {
-                        console.log('completeAll', arguments);
-
-                        setTimeout(function () {
-                            bar.setAttribute('hidden', 'hidden');
-                        }, 1000);
-
-                        alert('Upload Completed');
-                    }
-
-                });
-          });
-        </script>
     </body>
 </html>

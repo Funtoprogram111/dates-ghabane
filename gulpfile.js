@@ -38,7 +38,7 @@ elixir(function(mix) {
         'turbolinks.js'
     ], 'public/js/application.js')
 
-    .version(['public/css/application.css', 'public/js/application.js']);
+    .version(['public/css/application.css','public/js/application.js']);
 });
 
 /*elixir((mix) => {

@@ -11,6 +11,20 @@ html {
     box-sizing: inherit;
 }
 
+.scrolled {
+  z-index: 9999999;
+}
+.turbolinks-progress-bar {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      height: 6px;
+      background: #009CDC;
+      z-index: 9999;
+      transition: width 300ms ease-out, opacity 150ms 150ms ease-in;
+      transform: translate3d(0, 0, 0);
+}
 .bg-primary {
     background-color: none;
 }

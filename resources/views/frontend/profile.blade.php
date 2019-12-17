@@ -24,9 +24,9 @@
                   <p>{{ session('status') }}</p>
               </div>
             @endif
-            <form class="animated bounceInLeft" method="POST" action="{{ secure_url('/profile',$user->id) }}" enctype="multipart/form-data">
+            <form class="animated bounceInLeft" method="post" action="{{ secure_url('/profile',$user->id) }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                {{ method_field('put') }}
+                {{ method_field('PUT') }}
 
                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 
@@ -54,6 +54,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+
                     <div class="js-upload uk-placeholder uk-text-center" style="border:1px dashed #555;">
                         <span uk-icon="icon: cloud-upload"></span>
                         <span class="uk-text-middle">Attach binaries by dropping them here or</span>
@@ -63,7 +64,6 @@
                         </div>
                     </div>
 
-                    <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
                 </div>
                 @if ($errors->has('avatar'))
                     <span class="help-block text-lowercase text-small text-danger">

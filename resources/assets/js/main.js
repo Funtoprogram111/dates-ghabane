@@ -3,7 +3,6 @@
 
     $(document).ready(function() {
 
-
         ScrollReveal().reveal('.headline');
 
         $(window).scroll(function() {
@@ -38,5 +37,35 @@
             breakLines: false,
             waitUntilVisible: true
         }).go();
+
+        function searchToggle(obj, evt){
+              var container = $(obj).closest('.search-wrapper');
+                  if(!container.hasClass('active')){
+                      container.addClass('active');
+                      evt.preventDefault();
+                  }
+                  else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                      container.removeClass('active');
+                      // clear input
+                      container.find('.search-input').val('');
+                  }
+          }
+
+          $(function () {
+
+            var clearCacheOnce = function() {
+              Turbolinks.clearCache();
+            };
+
+            $('div.dropdown').hover(function() {
+              $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(100);
+            }, function() {
+              $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(100);
+            });
+
+            $('.icon-wishlist').on('click', function(){
+              $(this).toggleClass('in-wishlist');
+            });
+          });
 
 })();
