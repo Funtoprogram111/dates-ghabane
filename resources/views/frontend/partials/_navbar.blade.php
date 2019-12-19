@@ -23,10 +23,10 @@
       <a title="cart" class="nav-link" href="{{ route('cart.index') }}">
 
         @if (Cart::count() > 0)
-          <span class="sonar-effect uk-badge">{{ Cart::count() }}</span>
+          <span class="sonar-effect uk-badge" style="background: #000;">{{ Cart::count() }}</span>
           <i class="fab fa-opencart fa-1x mr-1"></i>Cart</a>
         @else
-          <span class="uk-badge" style="background: #000">{{ Cart::count() }}</span>
+          <span class="uk-badge" style="background: #000;">{{ Cart::count() }}</span>
           <i class="fab fa-opencart fa-1x mr-1"></i>Cart</a>
         @endif
 
