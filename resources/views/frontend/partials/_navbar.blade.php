@@ -37,7 +37,7 @@
       @if (Auth::check())
       <div class="dropdown show">
         <a id="dropdownMenuLink" href="" title="users_account" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="mr-1 border border-info uk-border-circle" width="22px" src="{{ secure_asset('/uploads/'. Auth::user()->avatar) }}" alt="">
+            <img class="mr-1 border border-dark uk-border-circle" width="22px" src="{{ secure_asset('/uploads/'. Auth::user()->avatar) }}" alt="">
             {{ Auth::user()->name }}
         </a>
         <div style="background-color: transparent;" class="dropdown-menu" aria-labelledby="dropdownMenuLink">
