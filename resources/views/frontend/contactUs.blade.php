@@ -46,7 +46,7 @@
 
 
     <div class="form-group">
-      <button class="btn-contact btn btn-info font-weight-light" type="submit"><i class="far fa-paper-plane mr-1"></i>submit</button>
+      <button class="btn-contact btn btn-warning font-weight-light" type="submit"><i class="far fa-paper-plane mr-1"></i>submit</button>
     </div>
 
   </form>

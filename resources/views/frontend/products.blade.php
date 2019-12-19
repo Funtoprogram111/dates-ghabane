@@ -6,7 +6,7 @@
           <div class="image-wrapper">
               <div class="addToCart">
                 <form style="z-index: 9999; position: relative;" method="get" action="{{ secure_url('/cart/add-item', $prod->id) }}">
-                  <button type="submit" class="btn btn-info btn-xs">
+                  <button type="submit" class="btn btn-warning btn-xs">
                     <i class="material-icons">add_shopping_cart</i>
                   </button>
                   {{ csrf_field() }}

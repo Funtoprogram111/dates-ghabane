@@ -111,7 +111,7 @@
                 <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12">
                   <form style="display: :none;" method="get" action="{{ secure_url('/#OurProducts') }}">
                     {{ csrf_field() }}
-                    <button class="btn btn-info btn-block font-weight-light text-uppercase"><i class="fas fa-shopping-basket mr-1"></i></i>Continue Shopping</button>
+                    <button class="btn btn-warning btn-block font-weight-light text-uppercase"><i class="fas fa-shopping-basket mr-1"></i></i>Continue Shopping</button>
                   </form>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-md-6 col-xs-12 text-right">
@@ -119,14 +119,14 @@
 
                     <form style="display: :none;" method="get" action="{{ secure_url('/checkout/shipping_info') }}">
                       {{ csrf_field() }}
-                      <button disabled="disabled" class="btn btn-info btn-block font-weight-light text-uppercase"><i class="fas fa-check mr-1"></i>Checkout</button>
+                      <button disabled="disabled" class="btn btn-warning btn-block font-weight-light text-uppercase"><i class="fas fa-check mr-1"></i>Checkout</button>
                     </form>
 
                   @else
 
                   <form style="display: :none;" method="get" action="{{ secure_url('/checkout/shipping_info') }}">
                       {{ csrf_field() }}
-                      <button class="btn btn-info btn-block font-weight-light text-uppercase"><i class="fas fa-check mr-1"></i>Checkout</button>
+                      <button class="btn btn-warning btn-block font-weight-light text-uppercase"><i class="fas fa-check mr-1"></i>Checkout</button>
                   </form>
 
                   @endif

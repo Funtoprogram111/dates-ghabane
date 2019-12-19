@@ -16,14 +16,14 @@
 
         <!-- Styles -->
 
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/all.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/uikit.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap-formhelpers.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/animate.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}">
+        {{--<link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/all.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/uikit.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap-formhelpers.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/animate.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}">--}}
 
-        {{--<link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-96e681c7ad.css') }}">--}}
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-e5e2246bea.css') }}">
         @stack('css')
 
     </head>

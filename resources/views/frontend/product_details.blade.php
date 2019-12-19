@@ -58,9 +58,18 @@
                         <button class="uk-button uk-button-secondary font-weight-light text-uppercase"><i class="fa fa-cart-plus mr-1"></i>add to cart</button>
                       </a>
                       <?php $count = App\Models\Wishlist::where(['product_id' => $product->id])->count(); ?>
-                      @if ($count == 0)
+                      @if (!Auth::check())
 
                         <form action="{{ secure_url('/add-item-to-wishlist') }}">
+                          <input type="hidden" name="product_id" value="{{ $product->id }}">
+                          <button disabled type="submit" class="ml-2 uk-button uk-button-primary font-weight-light text-uppercase"><i class="far fa-heart mr-1"></i>add to wishlist</button>
+                          {{ csrf_field() }}
+                        </form>
+                        <button class="uk-button uk-button-default font-weight-light text-uppercase" disabled>{{ $count }}</button>
+
+                      @elseif ($count == 0 || Auth::check())
+
+                          <form action="{{ secure_url('/add-item-to-wishlist') }}">
                           <input type="hidden" name="product_id" value="{{ $product->id }}">
                           <button type="submit" class="ml-2 uk-button uk-button-primary font-weight-light text-uppercase"><i class="far fa-heart mr-1"></i>add to wishlist</button>
                           {{ csrf_field() }}
