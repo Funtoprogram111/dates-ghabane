@@ -16,12 +16,13 @@
 
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
-        {{--
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/all.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/uikit.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}"> --}}
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-e5e2246bea.css') }}">
+
+        {{--<link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/bootstrap.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/all.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/uikit.min.css') }}">
+                        <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}"> --}}
+
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-6ef110358a.css') }}">
 
         <style type="text/css">
             .wrapper-tow{
@@ -233,17 +234,17 @@
         <script src="{{ secure_asset('frontend/js/turbolinks.js') }}" type="text/javascript" data-turbolinks-eval="false" data-turbolinks-suppress-warning=""></script>--}}
     </body>
     <script>
-        function searchToggle(obj, evt){
-              var container = $(obj).closest('.search-wrapper');
-                  if(!container.hasClass('active')){
-                      container.addClass('active');
-                      evt.preventDefault();
-                  }
-                  else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-                      container.removeClass('active');
-                      // clear input
-                      container.find('.search-input').val('');
-                  }
-          }
+      function searchToggle(obj, evt){
+            var container = $(obj).closest('.search-wrapper');
+                if(!container.hasClass('active')){
+                    container.addClass('active');
+                    evt.preventDefault();
+                }
+                else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
+                    container.removeClass('active');
+                    // clear input
+                    container.find('.search-input').val('');
+                }
+        }
     </script>
 </html>

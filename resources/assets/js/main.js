@@ -26,9 +26,9 @@
 
     });
 
-     /*setTimeout(function() {
-       $('.wrapper').addClass('loaded');
-     }, 3000);*/
+         /*setTimeout(function() {
+           $('.wrapper').addClass('loaded');
+         }, 3000);*/
 
 
         var pooper = new TypeIt('#introtxt', {
@@ -37,19 +37,6 @@
             breakLines: false,
             waitUntilVisible: true
         }).go();
-
-        function searchToggle(obj, evt){
-              var container = $(obj).closest('.search-wrapper');
-                  if(!container.hasClass('active')){
-                      container.addClass('active');
-                      evt.preventDefault();
-                  }
-                  else if(container.hasClass('active') && $(obj).closest('.input-holder').length == 0){
-                      container.removeClass('active');
-                      // clear input
-                      container.find('.search-input').val('');
-                  }
-          }
 
           $(function () {
 
@@ -67,5 +54,6 @@
               $(this).toggleClass('in-wishlist');
             });
           });
+
 
 })();
