@@ -12,16 +12,7 @@
                   {{ csrf_field() }}
                 </form>
               </div>
-              {{--<form action="{{ secure_url('/add-item-to-wishlist') }}">
-                                                                          <div class="wrapper-tow">
-                                                                              <button type="submit" class="btn btn-xs btn-default">
-                                                                                <div class="icon-wishlist"></div>
-                                                                              </button>
-                                                                          </div>
-                                                                        <input type="hidden" name="product_id" value="{{ $prod->id }}">
-                                                                        {{ csrf_field() }}
-                                                                      </form>--}}
-            <img class="img-fluid" src="{{ secure_asset($prod->image) }}" alt="dates_ghabane">
+            <img class="img-fluid" src="{{ secure_url('Products/'.$prod->image) }}" alt="dates_ghabane">
           </div>
           <div class="thumbnail-text mt-3 pr-2 pl-2">
             <div class="card-toptext">

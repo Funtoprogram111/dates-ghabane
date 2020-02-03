@@ -23,7 +23,7 @@
                         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/animate.min.css') }}">
                         <link rel="stylesheet" type="text/css" href="{{ secure_asset('frontend/css/style.css') }}">--}}
 
-        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-e5e2246bea.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset('build/css/application-6ef110358a.css') }}">
         @stack('css')
 
     </head>

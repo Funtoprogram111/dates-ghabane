@@ -26,8 +26,8 @@
               <div class="card bg-light mb-3">
                 <div class="card-header font-weight-light text-left">#image</div>
                 <div class="card-body p-0">
-                  <a title="{{ $product->slug }}" href="{{ secure_asset($product->image) }}">
-                    <img class="img-fluid" src="{{ secure_asset($product->image) }}" alt="dates_ghabane">
+                  <a title="{{ $product->slug }}" href="{{ secure_url('Products/'.$product->image) }}">
+                    <img class="img-fluid" src="{{ secure_url('Products/'.$product->image) }}" alt="dates_ghabane">
                   </a>
                 </div>
               </div>
@@ -111,7 +111,7 @@
                       <div class="uk-card uk-card-default uk-animation-fade">
                           <div class="uk-card-media-top">
                               <a class="uk-thumbnail" href="{{ route('dates', $product->slug, $product->id) }}" title="{{ $random->slug }}">
-                                <img class="img-fluid" src="{{ secure_asset($random->image) }}" alt="dates_ghabane">
+                                <img class="img-fluid" src="{{ secure_url('Products/'.$random->image) }}" alt="dates_ghabane">
                                 <div class="uk-position-center uk-panel text-center font-weight-bold text-lg">
                                 </div>
                               </a>

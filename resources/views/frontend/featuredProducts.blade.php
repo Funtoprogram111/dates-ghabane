@@ -15,7 +15,7 @@
             <div class="uk-card uk-card-default uk-card-body uk-transition-toggle p-0" >
                 <a title="{{ $product_filter->slug }}" href="{{ route('dates', $product_filter->slug, $product_filter->id) }}">
                     <div class="uk-overflow-hidden" >
-                        <img class="img-fluid uk-transition-scale-up uk-transition-opaque" src="{{ secure_asset($product_filter->image) }}" alt="dates_ghabane">
+                        <img class="img-fluid uk-transition-scale-up uk-transition-opaque" src="{{ secure_url('Products/'.$product_filter->image) }}" alt="dates_ghabane">
                     </div>
                 </a>
             </div>

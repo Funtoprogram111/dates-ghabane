@@ -54,7 +54,7 @@
 
                           <tr>
                               <td>{{ $product->id }}</td>
-                              <td><img width="50px" class="img-fluide" src="{{$product->image}}" alt="dates_ghabane"/></td>
+                              <td><img width="50px" class="img-fluide" src="{{ secure_url('Products/'.$product->image) }}" alt="dates_ghabane"/></td>
                               <td>{{ $product->name }}</td>
                               <td>{!! str_limit($product->description, $limit = 20, $end = '...') !!}</td>
                               <td class="text-success font-weight-bold">{{ $product->category->name }}</td>
